@@ -1,0 +1,21 @@
+body {
+    background-color: aquamarine;
+}
+h1 {
+    text-align: center;
+}
+.casilla {
+    display: flex;
+    padding: 1rem;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+.espacio {
+    justify-content: center;
+    justify-items: center;
+    width: 30%;
+    height: 30px;
+    margin-left: 35%;
+    margin-right: 50%;
+}
