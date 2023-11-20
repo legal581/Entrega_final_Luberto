@@ -4,9 +4,12 @@ body {
 h1 {
     text-align: center;
 }
-.casilla {
+/* .formulario{
     display: flex;
+} */
+.casilla {
     padding: 1rem;
+    display: flex;
     text-align: center;
     align-items: center;
     justify-content: center;
@@ -18,4 +21,26 @@ h1 {
     height: 30px;
     margin-left: 35%;
     margin-right: 50%;
+}
+.boton{
+    padding: 1rem;
+    background-color: #73be19;
+    display: flex;
+    margin: 0 auto;
+    border: 10px;
+    text-align: center;
+    color: white;
+    font-size: 15px;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    border-radius: 1rem;
+    width: 20rem;
+    margin-left: 100 rem;
+    margin-right: 100 rem;
+    margin-top: 30px;
+    cursor: pointer;
+    
+    
+ 
 }

@@ -4,22 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generador de código</title>
-    <script src="./Javascript/script.js"></script>
+    <script defer src="./Javascript/script.js"></script> 
     <link rel="stylesheet" href="./CSS/style.css">
 </head>
 <body>
     <h1>Generador de códigos:</h1>
     <p>La idea de este Generador de Códigos es a partir de datos que ingresa el usuario como Sigla que lo identifica, Producto Farmacéutico sobre el que va a trabajar, dosis y forma farmacéutica, crear un código numérico que lo identifique y guarde dicha información.</p>
-    <div>
-        <form>
+    <div class="formulario">
+        <form id="myForm">
             <label class="casilla">Analista:</label>
-            <input class="espacio" type="text" id="Nombreanalista">
+            <input class="espacio" type="text" id="Nombreanalista" placeholder="Ingrese su sigla de Analista">
             <label class="casilla">Producto:</label>
-            <input class="espacio" type="text" id="Molecula">
+            <input class="espacio" type="text" id="Molecula" placeholder="Ingrese API o MP">
             <label class="casilla">Dosis:</label>
-            <input class="espacio" type="text" id="Molecula">
+            <input class="espacio" type="text" id="Molecula" placeholder="Ingrese la dosis en mg">
             <label class="casilla">Forma Farmacéutica:</label>
-            <input class="espacio" type="text" id="Molecula">
+            <select class="espacio" name="Forma Farmacéutica" id="Molecula">
+                <option value="">Seleccione una Forma Farmacéutica</option>
+                <option value="EMU">EMU</option>
+                <option value="COM">COM</option>
+                <option value="COR">COR</option>
+                <option value="CRP">CRP</option>
+            </select>
+
+
+            <input class="boton" type="submit" value="Generar código">
         </form>
     </div>
 </body>
