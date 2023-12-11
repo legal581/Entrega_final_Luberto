@@ -2,6 +2,7 @@
 const siglas = ['AB', 'BC', 'CD', 'EF'];
 const formasfarma = ['COR', 'COM', 'EMU', 'CPR']
 const productos = ['DICLO', 'IBU', 'PARA', 'OME']
+const file = "../Datos/datos1.json";
 
 //Evento submit y creación de array de producto definidos
 
@@ -92,40 +93,18 @@ myForm.addEventListener('submit', function(event){
         
     }
     guardar_localstorage();
-
+//Almacenar datos en JSON
+    async function load(proyecto,producto_definido){
+        const responce = await fetch(file,{
+            method:'POST',
+            body:JSON.stringify(producto_definido),
+            headers:{'Contend-type':'aplication/json'}
+        })
+    }
+    load();
+    
     myForm.reset();
 
     console.log('Evento ejecutado')
 });
-
-
-
-
-
-
-// //Función para guardar en localstorage y cargar el contenido
-// function guardar_localstorage() {
-
-// let producto_definido = {
-//     nombre: colaborador,
-//     proyecto: api,
-//     mg: carga,
-//     form: presentacion
-// };
-// let proyecto = codigosigla;
-
-//     localStorage.setItem(proyecto, JSON.stringify(producto_definido));
-//     let nuevo_producto = JSON.parse(localStorage.getItem(proyecto));
-//     console.log(nuevo_producto);
-    
-// }
-
-// guardar_localstorage();
-
-
-
-
-
-
-
 
