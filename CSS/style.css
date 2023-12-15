@@ -40,6 +40,29 @@ h1 {
     margin-right: 100 rem;
     margin-top: 30px;
     cursor: pointer;
+
+
+
+}
+.boton1{
+    padding: 1rem;
+    background-color: #1942be;
+    display: flex;
+    margin: 0 auto;
+    border: 10px;
+    text-align: center;
+    color: white;
+    font-size: 15px;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    border-radius: 1rem;
+    width: 20rem;
+    margin-left: 100 rem;
+    margin-right: 100 rem;
+    margin-top: 30px;
+    cursor: pointer;
+    text-decoration: none;
     
     
  

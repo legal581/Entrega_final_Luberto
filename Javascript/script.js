@@ -1,8 +1,9 @@
 //Declaración de variables y arrays//
+const colaborador1 = 'juan';
 const siglas = ['AB', 'BC', 'CD', 'EF'];
-const formasfarma = ['COR', 'COM', 'EMU', 'CPR']
-const productos = ['DICLO', 'IBU', 'PARA', 'OME']
-const file = "https://raw.githubusercontent.com/yoelysfigueredopadron/JSON/main/productos-cosmocurio.json"
+const formasfarma = ['COR', 'COM', 'EMU', 'CPR'];
+const productos = ['DICLO', 'IBU', 'PARA', 'OME'];
+const file = '../Datos/datos1.json';
 //Evento submit y creación de array de producto definidos
 
 const myForm = document.getElementById("myForm");
@@ -14,7 +15,6 @@ myForm.addEventListener('submit', function(event){
     const colaborador = document.getElementById('nombreanalista').value;
     while (colaborador != String) {
         if (siglas.includes(colaborador.toUpperCase())) {
-            console.log(colaborador);
             break;
         } else {alert("Por favor, ingrese una sigla de Analista válida");}
         colaborador = document.getElementById('nombreanalista').value;
@@ -24,7 +24,6 @@ myForm.addEventListener('submit', function(event){
     let i = api;
     while (api !=String) {
         if (productos.includes(i.toUpperCase())) {
-           console.log(i);
            break;
         } else {alert("Por favor, ingrese una Molecula Precargada");} 
         api = document.getElementById('nombremolecula').value;
@@ -34,7 +33,6 @@ myForm.addEventListener('submit', function(event){
     let d = carga
     while (carga != "ESC") {
         if (Number(d)==d && d > 0) {
-           console.log(d);
            break;
        } else {alert("Por favor, ingrese un valor numérico positivo para la dosis") } 
        carga = parseFloat(document.getElementById('dosismg').value);
@@ -44,43 +42,36 @@ myForm.addEventListener('submit', function(event){
     let f = presentacion;
     while (presentacion != String) {
         if (formasfarma.includes(f.toUpperCase())) {
-            console.log(f);
+
             break;
         } else {alert("Por favor, ingrese una Forma Farmacéutica válida");}
         presentacion = document.getElementById('formato').value;
     }
     const producto_definido = {};
 
-    console.log(colaborador);
-    console.log(api);
-    console.log(carga);
-    console.log(presentacion);
+
 
     producto_definido.colaborador = colaborador;
     producto_definido.api = api;
     producto_definido.carga = carga;
     producto_definido.presentacion = presentacion;
+    productos_definidos.push(producto_definido);
 
-    productos_definidos.push(producto_definido)
-    console.log(producto_definido);
-    console.log(productos_definidos);
-
-    console.log(siglas.indexOf(colaborador.toUpperCase()));
-    console.log(productos.indexOf(api.toUpperCase()));
-    console.log(formasfarma.indexOf(presentacion.toUpperCase()));
-
-    //Funciones para generar el código//
+//Funciones para generar el código//
     function retornarstring(){
         return colaborador + api + presentacion;}
         let devuelvevalor = retornarstring();
-        console.log(devuelvevalor);
+
 
     function generarcodigo(){
         return siglas.indexOf(colaborador.toUpperCase()) + '2023' + productos.indexOf(i.toUpperCase()) + formasfarma.indexOf(f.toUpperCase()) + "-" + carga;
 }
-    let codigosigla = generarcodigo();
-    console.log(codigosigla);
-    alert('El código de su producto es el' + ' ' + codigosigla)
+    const codigosigla = generarcodigo();
+    Swal.fire({
+        title: 'El código de su producto es el' + ' ' + codigosigla,
+        text: "You clicked the button!",
+        icon: "success"
+      });
 
 //Guardar Localstorage
     function guardar_localstorage() {
@@ -88,42 +79,33 @@ myForm.addEventListener('submit', function(event){
         localStorage.setItem(proyecto, JSON.stringify(producto_definido));
 
         let nuevo_producto = JSON.parse(localStorage.getItem(proyecto));
-        console.log(nuevo_producto); 
+        
+         
         
     }
     guardar_localstorage();
 //Almacenar datos en JSON
-const update = {
-    title: 'A blog post by Kingsley',
-    body: 'Brilliant post on fetch API',
-    userId: 1,
-    };
-    
-    const options = {
-    method: 'POST',
-    mode: 'no-cors',
-    headers: {
-    'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(update),
-    };
-    fetch('../Datos/datos1.json', options)
-  .then(data => {
-      if (!data.ok) {
-        throw Error(data.status);
-       }
-       return data.json();
-      }).then(update => {
-      console.log(update);
-      // {
-      //title: 'A blog post by Kingsley',
-      //body: 'Brilliant post on fetch API',
-      //userId: 1,
-      //id: 101
-      // };
-      }).catch(e => {
-      console.log(e);
-      });
+const postData = async () => {
+    const newProduct = producto_definido;
+    try {
+        const response = await fetch(file,{
+            method:'POST',
+            mode: 'no-cors',
+            headers: {'Contend-Type':'application/json'},
+            body: JSON.stringify(newProduct)
+        });
+        if(response.ok){
+            const jsonResponse = await response.json();
+            //const {colaborador,api,carga,presentacion} = jsonResponse;
+        }
+    } catch (error) {
+        console.log(error);
+    }
+    finally {
+        alert('Producto cargado con éxito')
+    }
+}
+postData();
     myForm.reset();
 
    

@@ -4,15 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generador de código</title>
-    <script defer src="./Javascript/script.js"></script> 
+    <script defer src="./Javascript/script.js" type="module"></script> 
     <link rel="stylesheet" href="./CSS/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 </head>
 <body>
     <h1>Generador de códigos:</h1>
     <p>La idea de este Generador de Códigos es a partir de datos que ingresa el usuario como Sigla que lo identifica, Producto Farmacéutico sobre el que va a trabajar, dosis y forma farmacéutica, crear un código numérico que lo identifique y guarde dicha información.</p>
     <div class="formulario">
         <form id="myForm">
-            <label class="casilla">Analista:</label>
+            <label id="flogo" class="casilla">Analista:</label>
             <input class="espacio" type="text" id='nombreanalista' placeholder="Ingrese su sigla de Analista">
             <label class="casilla">Producto:</label>
             <input class="espacio" type="text" id='nombremolecula' placeholder="Ingrese API o MP">
@@ -29,7 +31,10 @@
 
 
             <input class="boton" type="submit" value="Generar código">
+            
         </form>
+        <a href="./busqueda.html" class="btn btn-primary btn-lg active boton1" role="button" aria-pressed="true">Buscar Código</a>
+        
     </div>
 </body>
 </html>
