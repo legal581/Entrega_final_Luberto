@@ -2,8 +2,7 @@
 const siglas = ['AB', 'BC', 'CD', 'EF'];
 const formasfarma = ['COR', 'COM', 'EMU', 'CPR']
 const productos = ['DICLO', 'IBU', 'PARA', 'OME']
-const file = "../Datos/datos1.json";
-
+const file = "https://raw.githubusercontent.com/yoelysfigueredopadron/JSON/main/productos-cosmocurio.json"
 //Evento submit y creación de array de producto definidos
 
 const myForm = document.getElementById("myForm");
@@ -94,17 +93,39 @@ myForm.addEventListener('submit', function(event){
     }
     guardar_localstorage();
 //Almacenar datos en JSON
-    async function load(proyecto,producto_definido){
-        const responce = await fetch(file,{
-            method:'POST',
-            body:JSON.stringify(producto_definido),
-            headers:{'Contend-type':'aplication/json'}
-        })
-    }
-    load();
+const update = {
+    title: 'A blog post by Kingsley',
+    body: 'Brilliant post on fetch API',
+    userId: 1,
+    };
     
+    const options = {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: {
+    'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(update),
+    };
+    fetch('../Datos/datos1.json', options)
+  .then(data => {
+      if (!data.ok) {
+        throw Error(data.status);
+       }
+       return data.json();
+      }).then(update => {
+      console.log(update);
+      // {
+      //title: 'A blog post by Kingsley',
+      //body: 'Brilliant post on fetch API',
+      //userId: 1,
+      //id: 101
+      // };
+      }).catch(e => {
+      console.log(e);
+      });
     myForm.reset();
 
-    console.log('Evento ejecutado')
+   
 });
 
